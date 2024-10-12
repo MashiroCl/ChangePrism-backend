@@ -1,0 +1,23 @@
+subprojects {
+    apply plugin: 'java'
+
+    group = 'org.mashirocl'
+    version = '0.0.1-SNAPSHOT'
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
+        testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+    }
+
+    tasks.withType(Test) {
+        useJUnitPlatform()
+    }
+}
+
+task bootRunViewer(type: Exec) {
+    dependsOn ':viewer:bootRun'
+}
